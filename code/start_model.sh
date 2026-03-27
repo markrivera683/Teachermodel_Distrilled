@@ -24,4 +24,8 @@ vllm serve "$MODEL_PATH" \
   --tensor-parallel-size "$TP_SIZE" \
   --dtype "${DTYPE:-auto}" \
   --api-key "${API_KEY:-teacher-local}" \
-  --generation-config "${GEN_CONFIG:-vllm}"
+  --generation-config "${GEN_CONFIG:-vllm}" \
+  --max-num-seqs 384 \
+  --max-num-batched-tokens 98304 \
+  --enable-chunked-prefill \
+  --gpu-memory-utilization 0.93
